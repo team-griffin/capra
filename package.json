@@ -1,0 +1,12 @@
+{
+  "name": "@team-griffin/capra",
+  "version": "0.1.0",
+  "description": "Common ramda utilities",
+  "main": "index.js",
+  "repository": "git@github.com:team-griffin/capra.git",
+  "author": "thd <tharisondenby@godaddy.com>",
+  "license": "MIT",
+  "dependencies": {
+    "ramda": "^0.25.0"
+  }
+}
