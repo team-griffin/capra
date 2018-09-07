@@ -1,8 +1,9 @@
 {
   "name": "@team-griffin/capra",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Common ramda utilities",
-  "main": "index.js",
+  "main": "dist/cjs/capra.js",
+  "module": "dist/es/capra.js",
   "repository": "git@github.com:team-griffin/capra.git",
   "author": "thd <tharisondenby@godaddy.com>",
   "license": "MIT",
