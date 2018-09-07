@@ -1,5 +1,10 @@
 # capra
 
+## curry1
+## curry2
+## curry3
+## curry4
+
 ## nuller
 ```js
 (...args: Array<any>) => null
@@ -52,7 +57,7 @@ Tests whether the provided array contains any elements
 ```js
 (arg: Array<any> | Object | string)
 ```
-Effectively the oppositeo of ramda-adjunct's `isNilOrEmpty`
+Effectively the opposite of ramda-adjunct's `isNilOrEmpty`
 
 ## mapIndexed
 ```js
@@ -71,3 +76,12 @@ a variant of `map` that includes the index
 ) => (arg: any) => any
 ```
 A shortcut for `R.ifElse(r.equals(true))`
+
+## arrayOf
+```js
+(
+  value: any,
+  count: number,
+) => Array<any>
+```
+Creates an array of the given size, where each element is `value`
