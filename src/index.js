@@ -26,5 +26,9 @@ export const isNotNilOrEmpty = r.both(
 
 export const mapIndexed = r.addIndex(r.map);
 
-
 export const ifElseBool = r.ifElse(isTrue);
+
+export const percentage = r.pipe(
+  r.divide,
+  r.multiply(100),
+);

@@ -71,3 +71,12 @@ a variant of `map` that includes the index
 ) => (arg: any) => any
 ```
 A shortcut for `R.ifElse(r.equals(true))`
+
+## percentage
+```js
+(
+  x: Number,
+  y: Number,
+) => Number
+```
+Returns x as a percentage of y `(x / y) * 100`
