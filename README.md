@@ -85,3 +85,12 @@ A shortcut for `R.ifElse(r.equals(true))`
 ) => Array<any>
 ```
 Creates an array of the given size, where each element is `value`
+
+## percentage
+```js
+(
+  x: Number,
+  y: Number,
+) => Number
+```
+Returns x as a percentage of y `(x / y) * 100`
