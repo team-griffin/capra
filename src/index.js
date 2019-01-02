@@ -35,8 +35,7 @@ export const arrayOf = curry2(
   ),
 );
 
-export const ifElseBool = r.ifElse(isTrue);
-
 export const percentage = r.pipe(
   r.divide,
   r.multiply(100),
+);
