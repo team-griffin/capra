@@ -1,6 +1,8 @@
 import * as r from 'ramda';
 import * as rA from 'ramda-adjunct';
 
+export * from './math';
+
 export const curry1 = r.curryN(1);
 export const curry2 = r.curryN(2);
 export const curry3 = r.curryN(3);

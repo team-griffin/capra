@@ -94,3 +94,17 @@ Creates an array of the given size, where each element is `value`
 ) => Number
 ```
 Returns x as a percentage of y `(x / y) * 100`
+
+
+The following are pipeable versions of ramda's math functions:
+## add
+## divide
+## mean
+## median
+## modulo
+## multiply
+## subtract
+## gt
+## gte
+## lt
+## lte

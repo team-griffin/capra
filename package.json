@@ -1,6 +1,6 @@
 {
   "name": "@team-griffin/capra",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Common ramda utilities",
   "main": "dist/cjs/capra.js",
   "module": "dist/es/capra.js",
