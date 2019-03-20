@@ -49,9 +49,9 @@ Tests if any element of a list is `false`
 
 ## hasLength
 ```js
-(arr: Array<any>) => boolean
+(arr: Array<any> | string) => boolean
 ```
-Tests whether the provided array contains any elements
+Tests whether the provided array contains any elements, or string has any characters.
 
 ## isNotNilOrEmpty
 ```js
