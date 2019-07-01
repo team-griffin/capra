@@ -1,6 +1,6 @@
 {
   "name": "@team-griffin/capra",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Common ramda utilities",
   "main": "dist/cjs/capra.js",
   "module": "dist/es/capra.js",
@@ -9,10 +9,7 @@
   "license": "MIT",
   "scripts": {
     "clean:dist": "rimraf ./dist",
-    "build:dev": "cross-env NODE_ENV=development rollup --config ./rollup/development.js",
-    "build:prod": "cross-env NODE_ENV=production rollup --config ./rollup/production.js",
-    "build:entry": "cross-env NODE_ENV=production rollup --config ./rollup/entry.js",
-    "build": "yarn clean:dist && yarn build:dev && yarn build:prod && yarn build:entry",
+    "build": "yarn clean:dist && rollup --config ./rollup/config.js",
     "prepublishOnly": "yarn build"
   },
   "dependencies": {
@@ -23,7 +20,6 @@
     "babel-core": "^6.26.3",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-plugin-istanbul": "^4.1.6",
-    "babel-plugin-ramda": "^1.6.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "cross-env": "^5.2.0",
@@ -31,8 +27,6 @@
     "rollup": "^0.62.0",
     "rollup-plugin-babel": "^3.0.7",
     "rollup-plugin-local-resolve": "^1.0.7",
-    "rollup-plugin-memory": "^3.0.0",
-    "rollup-plugin-replace": "^2.0.0",
-    "rollup-plugin-uglify-es": "^0.0.1"
+    "rollup-plugin-memory": "^3.0.0"
   }
 }

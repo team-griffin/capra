@@ -5,11 +5,11 @@ export default {
     input: 'src/index.js',
     output: [
     {
-      file: 'dist/es/capra.development.js',
+      file: 'dist/es/capra.js',
       format: 'es',
     },
     {
-      file: 'dist/cjs/capra.development.js',
+      file: 'dist/cjs/capra.js',
       format: 'cjs',
     },
   ],
@@ -20,4 +20,5 @@ export default {
       plugins: ['external-helpers'],
     }),
   ],
+  external: [ 'ramda', 'ramda-adjunct' ]
 };
