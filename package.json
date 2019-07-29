@@ -1,6 +1,6 @@
 {
   "name": "@team-griffin/capra",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "Common ramda utilities",
   "main": "dist/cjs/capra.js",
   "module": "dist/es/capra.js",
@@ -13,7 +13,7 @@
     "prepublishOnly": "yarn build"
   },
   "dependencies": {
-    "ramda": "^0.25.0",
+    "ramda": "^0.x.x",
     "ramda-adjunct": "^2.9.0"
   },
   "devDependencies": {

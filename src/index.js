@@ -41,3 +41,51 @@ export const percentage = r.pipe(
   r.divide,
   r.multiply(100),
 );
+
+export const filterObjIndexed = curry2((fn, obj) => r.pipe(
+  r.mapObjIndexed((v, k) => {
+    if (fn(v, k)) {
+      return v;
+    }
+    return '__@@tg/capra/REJECTED__';
+  }),
+  r.reject(r.equals('__@@tg/capra/REJECTED__')),
+)(obj));
+
+export const rejectObjIndexed = curry2((fn, obj) => {
+  return filterObjIndexed(r.complement(fn), obj);
+});
+
+export const sortObj = curry2((fn, obj) => {
+  const keys = r.sort(fn, r.keys(obj));
+  return r.reduce(
+    r.converge(
+      r.assoc,
+      [
+        r.nthArg(1),
+        r.pipe(
+          r.nthArg(1),
+          r.prop(r.__, obj),
+        ),
+        r.nthArg(0),
+      ],
+    ),
+    {},
+    keys,
+  );
+});
+
+export const sortObjBy = curry2((fn, obj) => {
+  const sortFn = (a, b) => {
+    const aa = fn(a);
+    const bb = fn(b);
+    if (aa < bb) {
+      return -1;
+    }
+    if (aa > bb) {
+      return 1;
+    }
+    return 0;
+  };
+  return sortObj(sortFn, obj);
+});
