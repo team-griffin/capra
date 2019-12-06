@@ -4,3 +4,4 @@
 
 # And then whitelist
 !dist/**
+!/index.d.ts
