@@ -63,4 +63,31 @@ declare module '@team-griffin/capra' {
   ): (
     obj: T,
   ) => T
+
+  function add(a: number, b: number): number
+  function add(a: number): (b: number) => number
+
+  function divide(a: number, b: number): number
+  function divide(a: number): (b: number) => number
+
+  function modulo(a: number, b: number): number
+  function modulo(a: number): (b: number) => number
+
+  function multiply(a: number, b: number): number
+  function multiply(a: number): (b: number) => number
+
+  function subtract(a: number, b: number): number
+  function subtract(a: number): (b: number) => number
+
+  function gt(a: number, b: number): boolean
+  function gt(a: number): (b: number) => boolean
+
+  function gte(a: number, b: number): boolean
+  function gte(a: number): (b: number) => boolean
+
+  function lt(a: number, b: number): boolean
+  function lt(a: number): (b: number) => boolean
+
+  function lte(a: number, b: number): boolean
+  function lte(a: number): (b: number) => boolean
 }
