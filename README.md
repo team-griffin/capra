@@ -1,126 +1,147 @@
-# capra
+# @team-griffin/capra
+We can do a lot of cool stuff with the latest ES spec. Rest/spread, Object.entries, etc. For 90% of what lodash/underscore/ramda provides you can easily accomplish with native javascript now. Capra's aim is just to cover some of the more awkward computations that aren't out-of-the-box yet.
 
-## curry1
-## curry2
-## curry3
-## curry4
+These methods are written for post-IE browsers so they're very small and very performant.
 
-## allTrue
-```js
-(list: Array<any>) => boolean
+## map-obj
+```ts
+(obj: object, fn: (key: strng, value: any) => [ string, any ]): object
 ```
-Tests if all elements of a list are `true`
+Calls `fn` with each `key`/`value` of `obj`. Expects a tuple of `newKey`/`newValue` in order to construct the return object.
 
-## allFalse
-```js
-(list: Array<any>) => boolean
+### before
+```ts
+Object
+  .entries(obj)
+  .reduce((acc, [ key, value ]) => {
+    const [ newKey, newValue ] = fn(key, value);
+    return {
+      ...acc,
+      [newKey]: newValue,
+    };
+  }, {});
 ```
-Tests if all elements of a list are `false`
 
-## anyTrue
-```js
-(list: Array<any>) => boolean
+### after
+```ts
+mapObj(obj, fn);
 ```
-Tests if any element of a list is `true`
 
-## anyFalse
-```js
-(list: Array<any>) => boolean
+## filter-obj
+```ts
+(obj: object, fn: (key: string, value: any) => boolean): object
 ```
-Tests if any element of a list is `false`
+Filters out object properties based on the predecate function.
 
-## hasLength
-```js
-(arg: Array<any> | string) => boolean
+### before
+```ts
+Object
+  .entries(obj)
+  .reduce((acc, [ key, value ]) => {
+    if (fn(key, value)) {
+      return {
+        ...acc,
+        [key]: value,
+      };
+    } else {
+      return acc;
+    }
+  })
 ```
-Tests whether the provided array contains any elements, or string has any characters.
 
-## isNotNilOrEmpty
-```js
-(arg: Array<any> | Object | string)
+### after
+```ts
+filterObj(obj, fn);
 ```
-Effectively the opposite of ramda-adjunct's `isNilOrEmpty`
 
-## ifElseBool
-```js
-(
-  trueFn: Function,
-  falseFn: Function,
-) => (arg: any) => any
+## invert-obj
+```ts
+(obj: object): object
 ```
-A shortcut for `R.ifElse(r.equals(true))`
+Inverts the key/value pairs of an object.
 
-## arrayOf
-```js
-(
-  value: any,
-  count: number,
-) => Array<any>
+### before
+```ts
+Object
+  .entries(obj)
+  .reduce((acc, [ key, value ]) => {
+    return {
+      ...acc,
+      [value]: key,
+    };
+  }, {});
 ```
-Creates an array of the given size, where each element is `value`
 
-## percentage
-```js
-(
-  x: Number,
-  y: Number,
-) => Number
+### after
+```ts
+invertObj(obj);
 ```
-Returns x as a percentage of y `(x / y) * 100`
 
-## filterObjIndexed
-```js
-(
-  fn: (v: any, key: string) => boolean,
-  obj: object
-) => object
+## omit
+```ts
+(obj: object, keys: string[]): object
 ```
-A mix between `r.mapObjIndexed` and `r.filter`. When `fn` returns `false` the property will be removed from the object.
+Omits the given keys from an object.
 
-## rejectObjIndexed
-```js
-(
-  fn: (v: any, key: string) => boolean,
-  obj: object
-) => object
+### before
+```ts
+const {
+  foo,
+  bah,
+  ...withoutFooBah,
+} = obj;
 ```
-The opposite of `filterObjIndexed`
 
-## sortObj
-```js
-(
-  fn: (a: any, b: any) => 1 | 0 | -1,
-  obj: object
-) => object
+### after
+```ts
+const withoutFooBah = omit(obj, [ 'foo', 'bah' ]);
 ```
-Sorts the keys of an object by the comparitor function
 
-## sortObjBy
-```js
-(
-  fn: (a: any, b: any) => any,
-  obj: object
-) => object
+## assoc-path
+```ts
+(obj: object, path: string[], value: any): object
 ```
-A variant of `sortBy` for objects
+Adds a property at a deeply-nested level. This was an ugly mess of spread properties and was hard to do dynamically...
 
+### before
+```ts
+{
+  ...obj,
+  foo: {
+    ...obj?.foo,
+    bah: {
+      ...obj?.foo?.bah,
+      baz: 'baz',
+    },
+  },
+}
+```
 
-The following are pipeable versions of ramda's math functions:
-## add
-## divide
-## mean
-## median
-## modulo
-## multiply
-## subtract
-## gt
-## gte
-## lt
-## lte
+### after
+```ts
+assocPath(obj, [ 'foo', 'bah', 'baz' ], 'baz');
+```
 
-The following methods have since been deprecated as they are already provided by ramda adjunct:
-## nuller
-see `rA.stubNull`
-## isTrue
-## isFalse
-## mapIndexed
+## group-by
+```ts
+(arr: any[], fn: (v: any) => string): object
+```
+Groups an array based on the given predecate
+
+### before
+_not really possible with native methods_
+
+### after
+```ts
+groupBy(arr, (x) => x.category);
+```
+
+## is-empty
+```ts
+(a: any): boolean
+```
+
+## is-nil-or-empty
+```ts
+(a: any): boolean
+```

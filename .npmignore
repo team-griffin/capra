@@ -1,7 +1,9 @@
-# Ignore everything
-*
-.*
-
-# And then whitelist
-!dist/**
-!/index.d.ts
+node_modules/
+src/
+.babelrc
+.eslintignore
+.eslintrc.js
+.gitginore
+test-setup.js
+tsconfig.json
+yarn.lock
